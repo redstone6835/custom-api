@@ -1,0 +1,16 @@
+# Build output
+dist/
+
+# The FreeBSD test VM image archive is large and reproducible from a mirror;
+# see vm/create-vm.sh for the download URL and checksum verification.
+vm/*.qcow2
+vm/*.qcow2.xz
+vm/*.img
+vm/seed.iso
+vm/user-data
+vm/meta-data
+
+# Runtime state if the gateway is ever run from the source tree
+var/
+*.log
+__pycache__/

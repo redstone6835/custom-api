@@ -1,0 +1,32 @@
+Custom-API customs gateway
+
+Build and deploy
+  make build          cross-compile the FreeBSD release (freebsd/amd64, static)
+  make stage          assemble dist/customapi-<version>/ with checksums
+  make ship           copy the release to the target
+  make install        run the installer on the target
+  make test           run the 43-check acceptance test on the target
+  make all            build + stage + ship + install + test
+
+Verification
+  make local-test     gofmt + vet + race tests + coverage, on this host
+  make test-race      go test ./... -race
+  make test-cover     coverage per package
+  make smoke          run the acceptance test on the target
+  make intel          run the intelligence pipeline test on the target
+  make e2e            smoke + intel
+
+Test virtual machine (libvirt, headless, serial console)
+  make vm             create (or recreate) the FreeBSD test VM
+  make vm-baseline    install curl/jq/go/python3 inside the guest
+  make vm-status      show domain, network and address state
+  make vm-console     attach to the serial console (Ctrl-] to detach)
+  make vm-stop        shut the VM down
+  make vm-destroy     undefine the domain (images kept)
+
+Housekeeping
+  make fmt            gofmt -w and verify clean
+  make vet            go vet
+  make clean          remove dist/
+
+Target selection: CUSTOMAPI_TARGET (default: customapi-bsd)
